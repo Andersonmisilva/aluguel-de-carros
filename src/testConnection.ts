@@ -1,14 +1,12 @@
- 
-const { MongoClient, ObjectId } = require("mongodb");
- 
-let singleton;
- 
-async function connect() {
-    if (singleton) return singleton;
- 
-    const client = new MongoClient(process.env.MONGO_HOST);
-    await client.connect();
- 
-    singleton = client.db(process.env.MONGO_DATABASE);
-    return singleton;
-}
+import sequelize from './config/database';
+
+(async () => {
+  try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  } finally {
+    process.exit();
+  }
+})();

@@ -23,4 +23,5 @@ Reserva.init({
   tableName: 'reservas',
 });
 
+
 export default Reserva;
