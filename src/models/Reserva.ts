@@ -25,10 +25,5 @@ Reserva.init({
   tableName: 'reservas',
 });
 
-Reserva.belongsTo(Cliente, { foreignKey: 'clienteId' });
-Reserva.belongsTo(Carro, { foreignKey: 'carroId' });
-Cliente.hasMany(Reserva, { foreignKey: 'clienteId' });
-Carro.hasMany(Reserva, { foreignKey: 'carroId' });
-
 
 export default Reserva;
