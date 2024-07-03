@@ -64,6 +64,7 @@ router.delete('/:id', async (req, res) => {
       await carro.destroy();
       res.status(204).send();
     } else {
+      console.warn(`Carro com id ${id} não encontrado para excluir`);
       res.status(404).json({ error: 'Carro não encontrado' });
     }
   } catch (error: any) {
