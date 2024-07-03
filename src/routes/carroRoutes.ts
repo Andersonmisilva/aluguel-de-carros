@@ -3,7 +3,6 @@ import Carro from '../models/Carro';
 
 const router = Router();
 
-// Rota para criar um carro
 router.post('/', async (req, res) => {
   try {
     const { marca, modelo, ano, disponibilidade } = req.body;
@@ -15,7 +14,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Rota para listar todos os carros
 router.get('/', async (req, res) => {
   try {
     const carros = await Carro.findAll();
@@ -26,7 +24,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Rota para obter um carro específico
 router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -42,7 +39,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Rota para atualizar um carro específico
 router.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -60,7 +56,6 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// Rota para deletar um carro específico
 router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
