@@ -20,7 +20,6 @@ app.get('/', (req, res) => {
   res.send('Bem-vindo ao sistema de aluguel de carros!');
 });
 
-// Função para testar a conexão com o banco de dados
 async function testDatabaseConnection() {
   try {
     await sequelize.authenticate();

@@ -3,23 +3,19 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('pagamentos', {
+    await queryInterface.createTable('reservas', {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true,
         allowNull: false,
       },
-      valor: {
-        type: Sequelize.FLOAT,
-        allowNull: false,
-      },
-      dataPagamento: {
+      dataInicio: {
         type: Sequelize.DATE,
         allowNull: false,
       },
-      metodo: {
-        type: Sequelize.STRING,
+      dataFim: {
+        type: Sequelize.DATE,
         allowNull: false,
       },
       status: {
@@ -41,6 +37,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('pagamentos');
+    await queryInterface.dropTable('reservas');
   },
 };
