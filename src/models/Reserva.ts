@@ -1,7 +1,5 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../config/database';
-import Cliente from './Cliente';
-import Carro from './Carro';
 
 class Reserva extends Model {}
 
@@ -24,6 +22,5 @@ Reserva.init({
   modelName: 'Reserva',
   tableName: 'reservas',
 });
-
 
 export default Reserva;

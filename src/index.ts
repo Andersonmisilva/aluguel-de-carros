@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import carroRoutes from './routes/carroRoutes';
 import clienteRoutes from './routes/clienteRoutes';
 import pagamentoRoutes from './routes/pagamentoRoutes';
-import reservaRoutes from './routes/reservaRoutes';
+import reservaRoutes from './routes/reservaRoutes'; 
 import sequelize from './config/database';
 
 dotenv.config();
@@ -22,7 +22,6 @@ app.get('/', (req, res) => {
   res.send('Bem-vindo ao sistema de aluguel de carros!');
 });
 
-// Função para testar a conexão com o banco de dados
 async function testDatabaseConnection() {
   try {
     await sequelize.authenticate();
