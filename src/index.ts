@@ -15,13 +15,14 @@ app.use(express.json());
 
 app.use('/carros', carroRoutes);
 app.use('/clientes', clienteRoutes);
-app.use('/pagamento', pagamentoRoutes);
-app.use('reserva', reservaRoutes);
+app.use('/pagamentos', pagamentoRoutes);
+app.use('/reservas', reservaRoutes);
 
 app.get('/', (req, res) => {
   res.send('Bem-vindo ao sistema de aluguel de carros!');
 });
 
+// Função para testar a conexão com o banco de dados
 async function testDatabaseConnection() {
   try {
     await sequelize.authenticate();

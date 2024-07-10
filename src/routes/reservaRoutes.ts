@@ -1,31 +1,22 @@
 import { Router } from 'express';
 import Reserva from '../models/Reserva';
-import Cliente from '../models/Cliente';
-import Carro from '../models/Carro';
 
 const router = Router();
 
-// Rota para criar uma reserva
 router.post('/', async (req, res) => {
   try {
     const { dataInicio, dataFim, status, clienteId, carroId } = req.body;
-    const novoReserva = await Reserva.create({ dataInicio, dataFim, status, clienteId, carroId });
-    res.status(201).json(novoReserva);
+    const novaReserva = await Reserva.create({ dataInicio, dataFim, status, clienteId, carroId });
+    res.status(201).json(novaReserva);
   } catch (error: any) {
     console.error('Erro ao criar reserva:', error);
     res.status(500).json({ error: error.message });
   }
 });
 
-// Rota para listar todas as reservas
 router.get('/', async (req, res) => {
   try {
-    const reservas = await Reserva.findAll({
-      include: [
-        { model: Cliente, attributes: ['nome', 'email'] },
-        { model: Carro, attributes: ['marca', 'modelo'] },
-      ]
-    });
+    const reservas = await Reserva.findAll();
     res.status(200).json(reservas);
   } catch (error: any) {
     console.error('Erro ao listar reservas:', error);
@@ -33,16 +24,10 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Rota para obter uma reserva específica
 router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const reserva = await Reserva.findByPk(id, {
-      include: [
-        { model: Cliente, attributes: ['nome', 'email'] },
-        { model: Carro, attributes: ['marca', 'modelo'] },
-      ]
-    });
+    const reserva = await Reserva.findByPk(id);
     if (reserva) {
       res.status(200).json(reserva);
     } else {
@@ -54,7 +39,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Rota para atualizar uma reserva específica
 router.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -72,7 +56,6 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// Rota para deletar uma reserva específica
 router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -81,6 +64,7 @@ router.delete('/:id', async (req, res) => {
       await reserva.destroy();
       res.status(204).send();
     } else {
+      console.warn(`Reserva com id ${id} não encontrada para excluir`);
       res.status(404).json({ error: 'Reserva não encontrada' });
     }
   } catch (error: any) {

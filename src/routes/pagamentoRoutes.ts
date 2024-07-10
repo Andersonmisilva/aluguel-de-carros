@@ -14,7 +14,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-
 router.get('/', async (req, res) => {
   try {
     const pagamentos = await Pagamento.findAll();
@@ -65,6 +64,7 @@ router.delete('/:id', async (req, res) => {
       await pagamento.destroy();
       res.status(204).send();
     } else {
+      console.warn(`Pagamento com id ${id} não encontrado para excluir`);
       res.status(404).json({ error: 'Pagamento não encontrado' });
     }
   } catch (error: any) {
