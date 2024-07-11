@@ -1,9 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import carroRoutes from './routes/carroRoutes';
-import clienteRoutes from './routes/clienteRoutes';
-import pagamentoRoutes from './routes/pagamentoRoutes';
-import reservaRoutes from './routes/reservaRoutes'; 
+import routes from './routes/routes';
 import sequelize from './config/database';
 
 dotenv.config();
@@ -13,10 +10,8 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.use('/carros', carroRoutes);
-app.use('/clientes', clienteRoutes);
-app.use('/pagamentos', pagamentoRoutes);
-app.use('/reservas', reservaRoutes);
+app.use(routes);
+
 
 app.get('/', (req, res) => {
   res.send('Bem-vindo ao sistema de aluguel de carros!');
