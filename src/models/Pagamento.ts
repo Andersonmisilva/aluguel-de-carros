@@ -27,4 +27,5 @@ Pagamento.init({
   tableName: 'pagamentos',
 });
 
+
 export default Pagamento;
