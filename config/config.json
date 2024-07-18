@@ -14,7 +14,7 @@
     "dialect": "postgres"
   },
   "production": {
-   "username": "Anderson",
+    "username": "Anderson",
     "password": "123456",
     "database": "aluguel_de_carros",
     "host": "127.0.0.1",

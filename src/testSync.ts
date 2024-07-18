@@ -1,12 +1,11 @@
 import sequelize from './config/database';
-import Carro from './models/Carro';
 
 (async () => {
   try {
-    await sequelize.sync({ force: true });
-    console.log('Modelo Carro sincronizado com sucesso.');
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
   } catch (error) {
-    console.error('Não foi possível sincronizar o modelo Carro:', error);
+    console.error('Unable to connect to the database:', error);
   } finally {
     process.exit();
   }
